@@ -8,6 +8,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
 });
 
+/* GET Credits page. */
+router.get('/author', function(req, res) {
+   res.render('author', { autor : 'Pedro Macías' });
+});
+
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load);  // autoload :quizId
 
