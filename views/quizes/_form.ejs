@@ -2,5 +2,16 @@
 <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<label for="resp" class="rem">Tema:</label>
+<select name="quiz[tema]">
+  <option id="otro" value="Otro" selected>Otro</option>
+  <option id="humanidades" value="Humanidades">Humanidades</option>
+  <option id="ocio" value="Ocio">Ocio</option>
+  <option id="ciencia" value="Ciencia">Ciencia</option>
+  <option id="tecnologia" value="Tecnologia">Tecnología</option>
+</select>
+<script>
+document.getElementById("<%= quiz.tema.toLowerCase() %>").selected = true;
+</script>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">

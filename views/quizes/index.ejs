@@ -1,10 +1,14 @@
-  <form method="get" action="/quizes/">
+  <form method="get" action="/quizes">
 	Buscar: <input type="text" name="search" value="<% search %>" />
 	<input type="submit" value="Submit" />
 </form>
 <table>
+    <tr>
+	<th>Tema</th><th>Pregunta</th><th colspan="2">Acción</th>
+    </tr>
   <% var i; for (i=0; i < quizes.length; i++) { %>        
     <tr>
+      <td><span class="letraTema" title="<%= quizes[i].tema %>"><%= quizes[i].tema.substr(0,1).toUpperCase() %></span></td>
       <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
       <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
       <td>
