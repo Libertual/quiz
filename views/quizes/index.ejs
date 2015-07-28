@@ -4,7 +4,11 @@
 </form>
 <table>
     <tr>
-	<th>Tema</th><th>Pregunta</th><th colspan="2">Acción</th>
+	<th>Tema</th><th>Pregunta</th>
+   <%if(session.user){%>
+<th colspan="2">Acción</th>
+   <% } %>
+
     </tr>
   <% var i; for (i=0; i < quizes.length; i++) { %>        
     <tr>
