@@ -29,6 +29,22 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+// MW auto logout
+
+app.use(function(req, res, next) {
+  console.log("session.time: "+ req.session.time + "\nDate.now(): "+ Date.now());
+
+  if(req.session && req.session.time < (Date.now() - 10000))
+  {
+	console.log("Destruida");
+	delete req.session.user;
+  }
+ else req.session.time = Date.now();
+  next();
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
@@ -41,6 +57,7 @@ app.use(function(req, res, next) {
   res.locals.session = req.session;
   next();
 });
+
 
 app.use('/', routes);
 
