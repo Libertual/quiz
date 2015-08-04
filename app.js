@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   console.log("session.time: "+ req.session.time + "\nDate.now(): "+ Date.now());
 
-  if(req.session && req.session.time < (Date.now() - 10000))
+  if(req.session && req.session.time < (Date.now() - (1000 * 60 * 2)))
   {
 	console.log("Destruida");
 	delete req.session.user;
